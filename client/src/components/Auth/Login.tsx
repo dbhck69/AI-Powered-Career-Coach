@@ -1,11 +1,11 @@
 import { useState } from 'react';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom'; // Import useNavigate
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const navigate = useNavigate(); // Initialize the hook
+  const navigate = useNavigate();
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -16,8 +16,9 @@ const Login = () => {
         { email, password }
       );
 
-      console.log('Login successful:', data); // Now this will show up
-      navigate('/dashboard'); // Redirect to a dashboard page
+      localStorage.setItem('token', data.token); // Save the token
+      console.log('Login successful:', data);
+      navigate('/dashboard');
     } catch (error) {
       if (axios.isAxiosError(error)) {
         console.error('Login failed:', error.response?.data?.message || 'Server error');

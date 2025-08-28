@@ -3,9 +3,10 @@ import ReactDOM from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Login from './components/Auth/Login.tsx';
 import Dashboard from './components/Dashboard.tsx';
+import ResumeUploader from './components/ResumeUploader.tsx';
+import JobFitScorer from './components/JobFitScorer.tsx'; // New import
 import './index.css';
 
-// Define a simple, non-nested router
 const router = createBrowserRouter([
   {
     path: '/',
@@ -22,6 +23,14 @@ const router = createBrowserRouter([
   {
     path: '/dashboard',
     element: <Dashboard />,
+  },
+  {
+    path: '/upload-resume',
+    element: <ResumeUploader />,
+  },
+  {
+    path: '/job-score', // New route
+    element: <JobFitScorer />,
   }
 ]);
 
